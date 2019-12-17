@@ -301,8 +301,17 @@ mariadb_server__client_options:
 # .. envvar:: mariadb_server__options [[[
 #
 # Dictionary or list with custom :program:`mysqld` options.
-mariadb_server__options: {}
 
+mariadb_server__options: '{{ mariadb_server__group_options|combine(mariadb_server__host_options) }}'
+                                                                   # ]]]
+# .. envvar:: mariadb_server__group_options [[[
+#
+# Dictionary with custom :program:`mysqld` options, configured per group
+mariadb_server__group_options: {}
+                                                                   # ]]]
+# .. envvar:: mariadb_server__host_options
+# Dictionary with custom :program:`mysqld` options, configured per host.
+mariadb_server__host_options: {}
                                                                    # ]]]
 # .. envvar:: mariadb_server__client_cnf_file [[[
 #
